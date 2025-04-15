@@ -9,12 +9,11 @@ Hopfield hopfield = new Hopfield(4);
 hopfield
     .AddSample(sample1)
     .AddSample(sample2)
-    .AddSample(sample3)
-    .DoWeightMatrix();
+    .AddSample(sample3);
 
 int[] testSample = { 1, 1, -1, -1 };
 
-int[] res = hopfield.Compute(testSample);
+int[] res = hopfield.Process(testSample);
 
 foreach (int i in res)
 {
