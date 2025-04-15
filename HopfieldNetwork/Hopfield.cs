@@ -23,20 +23,14 @@
             return this;
         }
 
-        public void DoWeightMatrix()
+        public int[] Process(int[] sample)
         {
-            _weightMatrix = new int[_sampleLenght, _sampleLenght];
+            DoWeightMatrix();
 
-            for (int i = 0; i < _sampleLenght; i++)
-            {
-                for (int j = 0; j < _sampleLenght; j++)
-                {
-                    _weightMatrix[i,j] = _matrices.Select(x => x[i,j]).Sum();
-                }
-            }
+            Compute(sample);
         }
 
-        public int[] Compute(int[] sample)
+        private int[] Compute(int[] sample)
         {
             if (sample is null) throw new ArgumentNullException();
             if (sample.Length != _sampleLenght) throw new ArgumentNullException();
@@ -54,6 +48,19 @@
             }
 
             return res;
+        }
+
+        private void DoWeightMatrix()
+        {
+            _weightMatrix = new int[_sampleLenght, _sampleLenght];
+
+            for (int i = 0; i < _sampleLenght; i++)
+            {
+                for (int j = 0; j < _sampleLenght; j++)
+                {
+                    _weightMatrix[i,j] = _matrices.Select(x => x[i,j]).Sum();
+                }
+            }
         }
 
         private int[,] DoMatrix(int[] sample)
