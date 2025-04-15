@@ -6,7 +6,11 @@ int[] sample3 = { -1, 1, -1, -1 };
 
 Hopfield hopfield = new Hopfield(4);
 
-hopfield.AddSample(sample1).AddSample(sample2).AddSample(sample3).DoWeightMatrix();
+hopfield
+    .AddSample(sample1)
+    .AddSample(sample2)
+    .AddSample(sample3)
+    .DoWeightMatrix();
 
 int[] testSample = { 1, 1, -1, -1 };
 
